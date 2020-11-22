@@ -1,10 +1,5 @@
 @font-family: "Lato", Georgia, Serif;
 
-.ascii-art {
-  font-family: monospace;
-  white-space: pre;
-}
-
 body {
   background-color: #000;
   overflow: hidden;
@@ -57,6 +52,32 @@ kbd{
   text-transform: uppercase;
   padding:0 .2em;
 }
+
+.container {
+
+  .avatar {
+  }
+  .pre {
+    color: #00adad;
+    font-weight: bold;
+  }
+  .child {
+    width: 450px;
+  }
+  h3 {
+    color: #00adad;
+    font-weight: bold;
+  }
+}
+
+.inline {
+  display: inline-block;
+}
+
+.flex {
+  display: flex;
+}
+
 .input {
   outline-color:  #30353a;
   border:         none;
@@ -92,7 +113,6 @@ kbd{
   color: green;
 }
 
-
 .command_input {
   border: none;
   background: #000634;
@@ -121,41 +141,4 @@ kbd{
 
 .terminal-data {
   display: none;
-}
-
-
-.line-1 {
-  position: relative;
-  top: 50%;
-  //width: 24em;
-  border-right: 2px solid rgba(255,255,255,.75);
-  white-space: nowrap;
-  overflow: hidden;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-
-/* Animation */
-.anim-typewriter{
-  -webkit-animation: typewriter 4s steps(44) 1s 1 normal both,
-  blinkTextCursor 500ms steps(44) infinite normal;
-  animation: typewriter 4s steps(44) 1s 1 normal both,
-  blinkTextCursor 500ms steps(44) infinite normal;
-}
-@-webkit-keyframes typewriter{
-  from{width: 0;}
-  to{width: 24em;}
-}
-@keyframes typewriter{
-  from{width: 0;}
-  to{width: 24em;}
-}
-@-webkit-keyframes blinkTextCursor{
-  from{border-right-color: rgba(255,255,255,.75);}
-  to{border-right-color: transparent;}
-}
-@keyframes blinkTextCursor{
-  from{border-right-color: rgba(255,255,255,.75);}
-  to{border-right-color: transparent;}
 }
