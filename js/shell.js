@@ -105,7 +105,8 @@ class Shell {
     this.updateHistory(command)
 
     const output = this.commands[cmd](args)
-    if (output) { this.term.innerHTML += output }
+    if (typeof output == 'object') { this.term.append(output); }
+    if (typeof output == 'string') { this.term.innerHTML += output; }
   }
 
   resetPrompt (term, prompt) {

@@ -1,6 +1,6 @@
 {
-  "about": "<p>Curious and passionate software engineer, mostly self-taught, I'm passionate about <p>",
-  "contact": "<p> Medium: <br/> Gitlab: <br/> Github: <br/> Linkedin: <br/> You can easily reach me on linkedIn or read about myself on medium ;)</p>",
+  "about": "<p>Curious and passionate software engineer, mostly self-taught, I'm passionate about <p> <br/> <p> <a href='https://medium.com/@tuxcy17'>Medium</a> <br/> <a href='https://gitlab.com/tuxcy'>Gitlab</a> <br/> Github: <br/> Linkedin: <br/> You can easily reach me on linkedIn or read about myself on medium ;)</p>",
+  "contact": "<p> <a href='https://medium.com/@tuxcy17'>Medium</a> <a href='https://gitlab.com/tuxcy'>Gitlab</a> Github: <br/> Linkedin: <br/> You can easily reach me on linkedIn or read about myself on medium ;)</p>",
   "skills": "wip:skills",
   "progsskill": "wip:progsskill",
   "softskill": "wip:softskill",

@@ -1,8 +1,10 @@
 <head>
-    <link rel="stylesheet/less" type="text/css" href="styles/main.less" />
+    <link rel="stylesheet/less" type="text/css" href="styles/main.less"/>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/1.4.3/js/jquery.terminal.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/1.4.3/js/jquery.terminal.js"></script>
+    <script type="text/javascript" src="js/utils.js"></script>
     <script type="text/javascript" src="js/shell.js"></script>
     <script type="text/javascript" src="js/cli.js"></script>
     <script type="text/javascript" src="js/textTyper.js"></script>
@@ -12,8 +14,17 @@
 <body>
 
 <div id="terminal">
-    <p class="text">Hi, my name is Cyril Richard (aka tuxcy) ^^ <br/>and this is my portfolio.<br/>Use the following commands to move through my portfolio website:-</p>
-    <div> <ul> <li><strong>cat FILENAME</strong> - display FILENAME in window</li><li><strong>ls</strong> - show files in current directory</li><li><strong>history</strong> - see your command history</li><li><strong>clear</strong> - clear current window</ul><span>You may also type 'help' + <kbd>Enter</kbd> -- to list the available commands.</span></div>
+    <p class="text">Hi, my name is Cyril Richard (aka tuxcy) ^^ <br/>and this is my portfolio.<br/>Use the following
+        commands to move through my portfolio website:-</p>
+    <div>
+        <ul>
+            <li><strong>cat FILENAME</strong> - display FILENAME in window</li>
+            <li><strong>ls</strong> - show files in current directory</li>
+            <li><strong>history</strong> - see your command history</li>
+            <li><strong>clear</strong> - clear current window
+        </ul>
+        <span>You may also type 'help' + <kbd>Enter</kbd> -- to list the available commands.</span>
+    </div>
     <p class="hidden">
         <span class="prompt">
           <span class="root">tuxcy</span>
@@ -22,7 +33,8 @@
         <span contenteditable="true" class="input"></span>
     </p>
 </div>
-</div>
 
+<script>
 
+</script>
 </body>

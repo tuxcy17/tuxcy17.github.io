@@ -37,9 +37,9 @@ commands.rm = commands.Rm = () => errors.noWriteAccess
 // view contents of specified directory
 commands.ls = commands.Ls = (directory) => {
   if (directory === '..' || directory === '~') {
-    return systemData['tuxcy']
+    return systemData['tuxcy']['index']
   }
-  return systemData[getDirectory()]
+  return systemData[getDirectory()]['index']
 }
 
 // view list of possible commands
@@ -81,21 +81,99 @@ commands.cat = commands.Cat = (filename) => {
   const dir = getDirectory()
   const fileKey = filename.split('.')[0]
 
-  if (fileKey in systemData && struct[dir].includes(fileKey)) {
-    return systemData[fileKey]
+  if (fileKey in systemData[dir] && struct[dir].includes(fileKey)) {
+    return systemData[dir][fileKey]
   }
 
   return errors.fileNotFound
 }
 
+commands.screenfetch = commands.Screenfetch = (callback) => {
+  const newDiv = document.createElement('div')
+  const p1 = document.createElement('p');
+  const txt = 'tes keefeijfzh izejfzuehrzirz uizedzuedzi d,zecnzinczet fzerzedze zedzed zedzedzed z zefzed zedzedz esrsergzqez';
+  // p1.classList.add('line-1', 'anim-typewriter');
+  newDiv.append(p1);
+
+
+//   newDiv.className = 'ascii-art';
+//   newDiv.innerHTML = `
+//             7O<br/>
+//    @     GGG<br/>
+//   7R   CQGGQ<br/>
+//  SGR  GGGGGQ<br/>
+// 7GGR #GGGGGQ      3GGGGGGS    SGC<br/>
+// RGGRRGGGGGGQ  7GGGGGGGGGGGG#(GGG(<br/>
+// QGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG<br/>
+// GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGQGGGO<br/>
+// GGGGGGGGGGGGGGGGGGGGGGQRGGGGGGGGGGG<br/>
+// GGGGGGGGGGGGGGGGGQRS///QGGGGGGGGGGR<br/>
+// GGGGGGGGGGGGGGQS(///^3QGGGGGGGGGGQ(<br/>
+// GGGGGGGGGGGQ3(//////SGGQS3GGGGGGGGQ<br/>
+// RGGGGGGGQ(//^///////RS(//RGGGGGGGGGt<br/>
+//    (((O /^^/^^^//^/////3RGGGGGGGGGGGC<br/>
+//      C///^/^^/^//^^^//^RGGGGGGGGGGGG7<br/>
+//     (7^//^/^^//((////^/QGGGGGGGGGGGQ(<br/>
+//     7R^ ^(S73/^   S//^^QGGRGGGGGGGGC<br/>
+//    O7     O3       (^/^GGQ3((QGGGGR<br/>
+//    S  OR(SO     /@  ///RR733S3QQ/<br/>
+//    #t  7S^O(       /^^/(////OO(<br/>
+//     7QCS^//(^     C3///////(/S<br/>
+//    O/^///////(OO33/////^/(7O#O<br/>
+//    C^^^^^/^/^^^^/^^/^^^^//(@RRR<br/>
+//     #(((/^^^^^^^^/^/^/^////RRBB@@C<br/>
+//    S(^/^^^//^^//^^////////^@RB@RRR@<br/>
+//   3^/^^/^//^^^^/^/^//^////(@RBBBB@BBO<br/>
+//  7/^^//^^//^/((OOSOO#(^///7@BBB@@@@BBC<br/>
+//    (3O3773SO//^/////^((///RBBB@B@@@BBR@t<br/>
+//          7RB@RO/^///^^////@BBB@@@@@@@BB@C<br/>
+//          BB@BBB#//^///////RB@B@@@@@@@B@BB#<br/>
+//          RB@BR@R@/^////^/RBB@@@@@@@@@B@@@BR<br/>
+//         ^B@@BB@@@Q///^//#B@@@@@@@@@@@@@@BBBO<br/>
+//         /@@@BB@@@7OOCO#@@@@@@@@@@@@@@@@@@BBR#<br/>
+//         7@@B@B@@BC    /RB@@@@@@@@@@@@B@@@BBBBB<br/>
+// <br/>
+// ------------------------------------------------<br/>
+// Thank you for visiting https://asciiart.website/<br/>
+// This ASCII pic can be found at<br/>
+// https://asciiart.website/index.php?art=television/futurama  <br/>`
+
+  function slowlyWrite(str) {
+    var parts = str.split(' ');
+
+
+    function type() {
+      var part = parts.shift();
+      if (!part) {
+        callback()
+      } else {
+        p1.innerText += ' ' + part;
+        type()
+      }
+    }
+    type();
+  }
+  slowlyWrite(txt);
+  return newDiv
+}
+
 // initialize cli
 $(() => {
   registerFullscreenToggle()
-  const cmd = document.getElementById('terminal')
-  const terminal = new Shell(cmd, commands)
+  const cmd = document.getElementById('terminal');
+  const terminal = new Shell(cmd, commands);
+  const input = $(terminal.term).find('span.input')[0];
+  const initialCommand = 'screenfetch';
 
   $.ajaxSetup({ cache: false })
-  $.get('data/system_data.json', (data) => {
-    systemData = data
+  loadData(function() {
+    console.log('end loading data');
   })
+
+    $(input).text(initialCommand);
+    $('.root').last().html(localStorage.directory)
+
+    // terminal.runCommand(initialCommand, function () {
+      // terminal.resetPrompt(terminal.term, input)
+    // });
 })
