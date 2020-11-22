@@ -106,7 +106,9 @@ $(() => {
     console.log('end loading data');
     $(prompt).text(initialCommand);
     $('.root').last().html(localStorage.directory)
-    terminal.runCommand(initialCommand)
-    terminal.resetPrompt(cmd, prompt)
+    if (window.innerWidth > 500) {
+      terminal.runCommand(initialCommand)
+      terminal.resetPrompt(cmd, prompt)
+    }
   })
 })
