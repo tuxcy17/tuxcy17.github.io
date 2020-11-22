@@ -55,9 +55,14 @@ kbd{
   padding:0 .2em;
 }
 
-.screenfetch.container {
+.screenfetch {
   flex-wrap: wrap;
+  .description {
+    padding: 10px;
+    width: 45%;
+  }
   .avatar {
+    width: 450px;
     justify-content: center;
     align-items: center;
   }
@@ -66,7 +71,6 @@ kbd{
     font-weight: bold;
   }
   .child {
-    width: 450px;
   }
   h3 {
     color: #00adad;
@@ -95,6 +99,8 @@ kbd{
 .input:focus {
   background-color: #383636;
   outline: none;
+  border:         none;
+  display:        inline-block;
   //padding-top: 5px;
 }
 
@@ -181,10 +187,22 @@ kbd{
 
 // media queries //
 
+@media only screen and (max-width: 900px) {
+  .screenfetch {
+    .description {
+      width: 80%;
+    }
+  }
+}
+
+
 @media only screen and (max-width: 500px) {
   .screenfetch {
     .avatar {
       display: none;
+    }
+    .description {
+      width: 100%;
     }
   }
 }
