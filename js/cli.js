@@ -9,7 +9,7 @@ const errors = {
 
 const struct = {
   cmd: ['help', 'screenfetch'],
-  tuxcy: ['about', 'skills', 'label', 'location', 'education']
+  tuxcy: ['about', 'contact', 'education', 'experiences', 'related']
 }
 
 const commands = {}
@@ -44,7 +44,7 @@ commands.ls = commands.Ls = (directory) => {
 }
 
 // view list of possible commands
-commands.help = commands.Help = () => systemData.help
+commands.help = commands.Help = () => systemData.cmd.help
 
 // display current path
 commands.path = commands.Path = () => {
