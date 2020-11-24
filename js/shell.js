@@ -148,10 +148,10 @@ class Shell {
       `<p class="hidden">
         <span class="prompt">
           <span class="root">tuxcy</span>
-          <span class="tick">❯</span>
+          <span class="tick gray">#</span>
         </span>
         <span contenteditable="true" class="input"></span>
-      </p>`
+       </p>`
     )
     $('.input').focus()
   }
