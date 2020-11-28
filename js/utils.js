@@ -1,22 +1,26 @@
 function loadData(callback) {
   var dirsToLoad = Object.keys(struct);
+  var promises = []
 
-  function load(dirs, currentDir, files) {
-    if (files && files.length) {
-      var currentFile = files.shift();
-      var url = ['.', 'data', currentDir, currentFile + '.html'].join('/')
-      $.get(url, function(data) {
-        systemData[currentDir][currentFile] = data;
-        load(dirs, currentDir, files)
+  dirsToLoad.forEach(function(dir) {
+    var filesToLoad = ['index'].concat(struct[dir]);
+    systemData[dir] = {}
+    filesToLoad.forEach(function(file) {
+      var url = ['.', 'data', dir, file + '.html'].join('/')
+      var p = new Promise(function(resolve, reject) {
+        fetch(url).then(function(res) {
+          res.text().then(function(data) {
+            systemData[dir][file] = data;
+            resolve();
+          });
+        });
       });
-    } else if (dirs.length) {
-      var dir = dirs.shift();
-      var filesToLoad = ['index'].concat(struct[dir]);
-      systemData[dir] = {}
-      load(dirs, dir, filesToLoad);
-    } else {
-      callback();
-    }
-  }
-  load(dirsToLoad);
+      promises.push(p);
+    })
+  })
+  Promise.all(promises).then(function(data) {
+    callback();
+  }, function(err) {
+    console.error(err);
+  })
 }
